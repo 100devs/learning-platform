@@ -17,25 +17,34 @@ const LoginPage = () => {
       const session = await account.createEmailPasswordSession(email, password);
       console.log("Session created:", session);
       setLoggedInUser(await account.get());
-    } catch (err: any) {
-      setError(err.message || "Login failed");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Login failed");
+      }
     } finally {
       setLoading(false);
     }
   };
-
+  
   const register = async () => {
     try {
       setLoading(true);
       setError("");
       await account.create(ID.unique(), email, password, name);
       await login(email, password);
-    } catch (err: any) {
-      setError(err.message || "Registration failed");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Registration failed");
+      }
     } finally {
       setLoading(false);
     }
   };
+  
 
   const logout = async () => {
     try {
