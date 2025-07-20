@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import { account, ID } from "../appwrite";
+import type { Models } from "appwrite";
 
 const LoginPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState<Models.User<Models.Preferences> | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -16,7 +17,8 @@ const LoginPage = () => {
       setError("");
       const session = await account.createEmailPasswordSession(email, password);
       console.log("Session created:", session);
-      setLoggedInUser(await account.get());
+      const user = await account.get();
+      setLoggedInUser(user);
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -27,7 +29,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-  
+
   const register = async () => {
     try {
       setLoading(true);
@@ -44,7 +46,6 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-  
 
   const logout = async () => {
     try {
@@ -61,7 +62,6 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-  
 
   if (loggedInUser) {
     return (
