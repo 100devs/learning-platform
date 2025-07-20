@@ -15,6 +15,7 @@ const LoginPage = () => {
       setLoading(true);
       setError("");
       const session = await account.createEmailPasswordSession(email, password);
+      console.log("Session created:", session);
       setLoggedInUser(await account.get());
     } catch (err: any) {
       setError(err.message || "Login failed");
@@ -41,12 +42,17 @@ const LoginPage = () => {
       setLoading(true);
       await account.deleteSession("current");
       setLoggedInUser(null);
-    } catch (err: any) {
-      setError(err.message || "Logout failed");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Logout failed");
+      }
     } finally {
       setLoading(false);
     }
   };
+  
 
   if (loggedInUser) {
     return (
