@@ -23,14 +23,14 @@ This guide will help you set up Appwrite for this project
    - For development: add `localhost:3000`
    - For production: add your domain
 
-### 4. Environment Variables 
+### 4. Environment Variables
 
 1. Change `.env.example` to `.env.local` in your project root
 
-2. **Replace:** 
+2. **Replace:**
+
 - `NEXT_PUBLIC_APPWRITE_PROJECT_ID` with your actual Appwrite project ID
 - `NEXT_PUBLIC_APPWRITE_ENDPOINT` with your actual Appwrite endpoint that looks like "https://city.cloud.appwrite.io/v1"
-
 
 ## Features
 
@@ -51,7 +51,6 @@ The login page includes:
 3. Use the "Create new account" button to register a new user
 4. After successful login, users will see a welcome message with logout option
 
-
 ## Troubleshooting
 
 ### Common Issues
@@ -59,4 +58,3 @@ The login page includes:
 1. **"Project ID not found"**: Make sure you've updated the project ID in `.env.local`
 2. **CORS errors**: Ensure your domain is added to the allowed domains in Appwrite settings
 3. **Authentication failed**: Check that email/password auth is enabled in your Appwrite project
-
