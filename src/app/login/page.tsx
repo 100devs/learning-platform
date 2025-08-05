@@ -4,7 +4,8 @@ import { account, ID } from "../appwrite";
 import type { Models } from "appwrite";
 
 const LoginPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState<Models.User<Models.Preferences> | null>(null);
+  const [loggedInUser, setLoggedInUser] =
+    useState<Models.User<Models.Preferences> | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -73,7 +74,8 @@ const LoginPage = () => {
                 Welcome!
               </h2>
               <p className="text-gray-600 mb-6">
-                Logged in as <span className="font-semibold">{loggedInUser.name}</span>
+                Logged in as{" "}
+                <span className="font-semibold">{loggedInUser.name}</span>
               </p>
               <button
                 type="button"
@@ -108,10 +110,13 @@ const LoginPage = () => {
               {error}
             </div>
           )}
-          
+
           <form className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
               <div className="mt-1">
@@ -130,7 +135,10 @@ const LoginPage = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="mt-1">
@@ -149,7 +157,10 @@ const LoginPage = () => {
             </div>
 
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Full Name
               </label>
               <div className="mt-1">
@@ -178,7 +189,7 @@ const LoginPage = () => {
               >
                 {loading ? "Signing in..." : "Sign in"}
               </button>
-              
+
               <button
                 type="button"
                 onClick={register}
